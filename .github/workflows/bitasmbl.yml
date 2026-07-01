@@ -16,7 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install Frontend
-        run: mn create-app backend
+        run: 
+         curl -s https://get.sdkman.io | bash
+         source "$HOME/.sdkman/bin/sdkman-init.sh"
+         sdk install micronaut
+         source "$HOME/.sdkman/bin/sdkman-init.sh"
+         mn create-app backend
       - name: Commit scaffold
         run: |
           git config user.name "${{ github.actor }}"
